@@ -1,6 +1,6 @@
 # JioSaavn API
 
-Base URL: `http://localhost:3000/api`
+Base URL: `http://teenapi.dino.icu/api/`
 
 All endpoints return JSON with the structure: `{ success: boolean, data: T }`
 
