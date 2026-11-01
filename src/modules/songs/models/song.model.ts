@@ -1,6 +1,9 @@
-import { DownloadLinkModel } from '#common/models'
-import { ArtistMapAPIResponseModel, ArtistMapModel } from '#modules/artists/models/artist-map.model'
-import { z } from 'zod'
+import { DownloadLinkModel } from "#common/models";
+import {
+  ArtistMapAPIResponseModel,
+  ArtistMapModel,
+} from "#modules/artists/models/artist-map.model";
+import { z } from "zod";
 
 export const SongAPIResponseModel = z.object({
   id: z.string(),
@@ -24,7 +27,7 @@ export const SongAPIResponseModel = z.object({
     label: z.string(),
     origin: z.string(),
     is_dolby_content: z.boolean(),
-    '320kbps': z.string(),
+    "320kbps": z.string(),
     encrypted_media_url: z.string(),
     encrypted_cache_url: z.string(),
     album_url: z.string(),
@@ -33,7 +36,7 @@ export const SongAPIResponseModel = z.object({
       code: z.string(),
       cacheable: z.string(),
       delete_cached_object: z.string(),
-      reason: z.string()
+      reason: z.string(),
     }),
     cache_state: z.string(),
     has_lyrics: z.string(),
@@ -43,7 +46,7 @@ export const SongAPIResponseModel = z.object({
     artistMap: z.object({
       primary_artists: z.array(ArtistMapAPIResponseModel),
       featured_artists: z.array(ArtistMapAPIResponseModel),
-      artists: z.array(ArtistMapAPIResponseModel)
+      artists: z.array(ArtistMapAPIResponseModel),
     }),
     release_date: z.string(),
     label_url: z.string(),
@@ -52,9 +55,9 @@ export const SongAPIResponseModel = z.object({
     triller_available: z.boolean(),
     request_jiotune_flag: z.boolean(),
     webp: z.string(),
-    lyrics_id: z.string()
-  })
-})
+    lyrics_id: z.string(),
+  }),
+});
 
 export const SongModel = z.object({
   id: z.string(),
@@ -74,13 +77,13 @@ export const SongModel = z.object({
   album: z.object({
     id: z.string().nullable(),
     name: z.string().nullable(),
-    url: z.string().nullable()
+    url: z.string().nullable(),
   }),
   artists: z.object({
     primary: z.array(ArtistMapModel),
     featured: z.array(ArtistMapModel),
-    all: z.array(ArtistMapModel)
+    all: z.array(ArtistMapModel),
   }),
   image: z.array(DownloadLinkModel),
-  downloadUrl: z.array(DownloadLinkModel)
-})
+  downloadUrl: z.array(DownloadLinkModel),
+});

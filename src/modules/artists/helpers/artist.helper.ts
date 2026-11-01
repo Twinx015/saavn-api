@@ -1,15 +1,17 @@
-import { createImageLinks } from '#common/helpers'
-import { createAlbumPayload } from '#modules/albums/helpers'
-import { createSongPayload } from '#modules/songs/helpers'
+import { createImageLinks } from "#common/helpers";
+import { createAlbumPayload } from "#modules/albums/helpers";
+import { createSongPayload } from "#modules/songs/helpers";
 import type {
   ArtistAPIResponseModel,
   ArtistMapAPIResponseModel,
   ArtistMapModel,
-  ArtistModel
-} from '#modules/artists/models'
-import type { z } from 'zod'
+  ArtistModel,
+} from "#modules/artists/models";
+import type { z } from "zod";
 
-export const createArtistPayload = (artist: z.infer<typeof ArtistAPIResponseModel>): z.infer<typeof ArtistModel> => ({
+export const createArtistPayload = (
+  artist: z.infer<typeof ArtistAPIResponseModel>,
+): z.infer<typeof ArtistModel> => ({
   id: artist.artistId || artist.id,
   name: artist.name,
   url: artist.urls?.overview || artist.perma_url,
@@ -36,7 +38,9 @@ export const createArtistPayload = (artist: z.infer<typeof ArtistAPIResponseMode
       name: similarArtist.name,
       url: similarArtist.perma_url,
       image: createImageLinks(similarArtist.image_url),
-      languages: similarArtist.languages ? JSON.parse(similarArtist.languages) : null,
+      languages: similarArtist.languages
+        ? JSON.parse(similarArtist.languages)
+        : null,
       wiki: similarArtist.wiki,
       dob: similarArtist.dob,
       fb: similarArtist.fb,
@@ -46,17 +50,19 @@ export const createArtistPayload = (artist: z.infer<typeof ArtistAPIResponseMode
       dominantType: similarArtist.dominantType,
       aka: similarArtist.aka,
       bio: similarArtist.bio ? JSON.parse(similarArtist.bio) : null,
-      similarArtists: similarArtist.similar ? JSON.parse(similarArtist.similar) : null
-    })) || null
-})
+      similarArtists: similarArtist.similar
+        ? JSON.parse(similarArtist.similar)
+        : null,
+    })) || null,
+});
 
 export const createArtistMapPayload = (
-  artist: z.infer<typeof ArtistMapAPIResponseModel>
+  artist: z.infer<typeof ArtistMapAPIResponseModel>,
 ): z.infer<typeof ArtistMapModel> => ({
   id: artist.id,
   name: artist.name,
   role: artist.role,
   image: createImageLinks(artist.image),
   type: artist.type,
-  url: artist.perma_url
-})
+  url: artist.perma_url,
+});

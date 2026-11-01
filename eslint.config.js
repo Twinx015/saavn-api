@@ -1,16 +1,16 @@
-import { config } from '@kolhe/eslint-config'
+import { config } from "@kolhe/eslint-config";
 
 export default config(
   [
     {
-      files: ['src/**/*.ts'],
+      files: ["src/**/*.ts"],
       rules: {
-        'import/no-default-export': 'off'
-      }
-    }
+        "import/no-default-export": "off",
+      },
+    },
   ],
   {
     prettier: true,
-    markdown: true
-  }
-)
+    markdown: true,
+  },
+);
